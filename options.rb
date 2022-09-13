@@ -1,4 +1,17 @@
+require './book/create_book'
+require_relative './label/label_module'
+require_relative './book/book_module'
+
 class Options
+include LabelModule
+include BookModule
+
+  def initialize
+    @books= []
+    @labels = []
+    @execute = CreateBook.new(@books, @labels)
+  end
+
   def show_options
     puts ['1 - List all books',
           '2 - List all music albums',
@@ -14,23 +27,23 @@ class Options
 
   def chosen_value(value)
     case value
-    when 1
+    when '1'
       list_all_books
-    when 2
+    when '2'
       list_all_music_album
-    when 3
+    when '3'
       list_games
-    when 4
+    when '4'
       list_all_genre
-    when 5
-      list_all_label
-    when 6
+    when '5'
+      list_all_labels
+    when '6'
       list_authors
-    when 7
-      add_book
-    when 8
-      dd_music_album
-    when 9
+    when '7'
+      @execute.add_book
+    when '8'
+      add_music_album
+    when '9'
       add_game
     else
       puts 'Please enter a number between 1 and 0.'
