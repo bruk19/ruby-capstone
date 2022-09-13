@@ -6,7 +6,6 @@ class App
   end
 
   def start_app
-    
     until @options.show_options
       value = gets.chomp
       if value == '0'
