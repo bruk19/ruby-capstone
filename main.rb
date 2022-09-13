@@ -1,8 +1,8 @@
 require './app'
 
-def main()
+def main
   app = App.new()
-  app.start
+  app.start_app
 end
 
 main
