@@ -37,10 +37,12 @@ class RunMusic
   end
 
   def self.list_all_music_album(music_albums)
-    puts "\nThere are no music albums yet." if music_albums.empty?
-    puts "################## Music Albums ##################"
-    music_albums.each_with_index do |music_album, index|
-      puts "#{index}) Title: \"#{music_album.author}\", Source: \"#{music_album.source}\", Label: \"#{music_album.label}\", Publish date: \"#{music_album.publish_date}\", Archived: \"#{music_album.archived}\", On Spotify: \"#{music_album.on_spotify}\""
+    if music_albums.empty? 
+      puts "\nThere are no music albums yet." 
+    else puts "################## Music Albums ##################"
+        music_albums.each_with_index do |music_album, index|
+          puts "#{index}) Title: \"#{music_album.author}\", Source: \"#{music_album.source}\", Label: \"#{music_album.label}\", Publish date: \"#{music_album.publish_date}\", Archived: \"#{music_album.archived}\", On Spotify: \"#{music_album.on_spotify}\""
+        end
+      end
     end
-  end
 end
