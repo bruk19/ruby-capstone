@@ -72,24 +72,23 @@ class RunMusic
 
   def self.load_music_albums
     # read from file
-    records = []
+    music_records = []
     File.write('./json/music_album.json', []) unless File.exist?('./json/music_album.json')
     records = JSON.parse(File.read('./json/music_album.json'))
+
     records.each do |record| 
-      p records[0].title
-      genre = Genre.new(record.genre)
-      if record.archived == 'true' && record.on_spotify == 'true'
-        music_album = MusicAlbum.new(true, record.title, record.source, record.label, record.publish_date, true)
-        music_album.genre=(record.genre)
-        records << music_album
-        puts "\nMusic album added successfully!"
-      elsif archived == 'false' || on_spotify == 'false'
-        music_album = MusicAlbum.new(false, title, source, label, publish_date, false)
-        music_album.genre=(record.genre)
-        records << music_album
+      genre = Genre.new(record['genre'])
+      if record['archived'] == true && record['on_spotify'] == true
+        music_album = MusicAlbum.new(true, record['title'], record['source'], record['label'], record['publish_date'], true)
+        music_album.genre=(genre)
+        music_records << music_album
+      elsif record['archived'] == false || record['on_spotify'] == false
+        music_album = MusicAlbum.new(false, record['title'], record['source'], record['label'], record['publish_date'], false)
+        music_album.genre=(genre)
+        music_records << music_album
       end
     end
-    records
+    music_records
   end
   
 end
