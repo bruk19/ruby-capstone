@@ -5,13 +5,13 @@ require_relative './store/preserve_book'
 require_relative './store/preserve_label'
 
 class Options
-include LabelModule
-include BookModule
-include BooksPreserve
-include LabelsPreserve
+  include LabelModule
+  include BookModule
+  include BooksPreserve
+  include LabelsPreserve
 
   def initialize
-    @books= load_books
+    @books = load_books
     @labels = load_labels
     @execute = CreateBook.new(@books, @labels)
   end

@@ -9,7 +9,6 @@ describe Book do
     @book1.add_label(@label)
   end
 
-  
   it 'It should an instance Book object' do
     expect(@book1).to be_instance_of Book
   end
@@ -29,5 +28,4 @@ describe Book do
   it 'should add label to item ' do
     expect(@book1.label.items.length).to eql 1
   end
-  
 end

@@ -18,9 +18,7 @@ describe Label do
     end
   end
 
-  
   it 'it should return one item' do
     expect(@label.items.length).to eql 1
   end
-  
 end

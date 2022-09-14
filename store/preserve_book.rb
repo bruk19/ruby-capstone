@@ -5,7 +5,7 @@ module BooksPreserve
     bookstore = []
     @books.each do |book|
       bookstore << { id: book.id, publisher: book.publisher, cover_state: book.cover_state, publish_date: book.publish_date,
-                    archived: book.archived, label: book.title }
+                     archived: book.archived, label: book.title }
     end
     File.write('./json/book.json', bookstore.to_json)
   end
@@ -17,7 +17,7 @@ module BooksPreserve
       data = JSON.parse(book_file.read)
       data.each do |book|
         bookstore << Book.new(book['publisher'], book['cover_state'], book['publish_date'], book['archived'],
-                             book['label'], book['id'])
+                              book['label'], book['id'])
       end
     else
       File.write(book_file, '[]')

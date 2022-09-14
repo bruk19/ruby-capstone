@@ -7,11 +7,11 @@ class Item
   def initialize(publish_date, archived, id = nil)
     @publish_date = publish_date
     @archived = archived
-    @id = id  || Random.rand(1..1000)
-  end  
+    @id = id || Random.rand(1..1000)
+  end
 
   def move_to_archive
-    if(can_be_archived?) 
+    if (can_be_archived?)
       archived = true
     end
   end

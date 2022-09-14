@@ -15,6 +15,4 @@ module BookModule
       end
     end
   end
-
-  
 end
