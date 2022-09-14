@@ -17,7 +17,7 @@ class Options
     @labels = load_labels
     @execute = CreateBook.new(@books, @labels)
     @music_albums = []
-    @genre_list = []
+    @genre_list = RunGenre.load_genre
   end
 
   def show_options
