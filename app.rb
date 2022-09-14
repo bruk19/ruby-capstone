@@ -15,8 +15,6 @@ class App
       @options.chosen_value(value)
       @options.store_books
       @options.store_labels
-      @options.add_music_album
-      @options.list_all_music_album
     end
   end
 end
