@@ -14,7 +14,3 @@ class MusicAlbum < Item
     archived && @on_spotify
   end
 end
-
-test = MusicAlbum.new(false, "title", "source", "label", "2022/09/16", true)
-p test
-p test.on_spotify
