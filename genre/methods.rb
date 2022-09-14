@@ -26,7 +26,7 @@ class RunGenre
     genre_records = []
     File.write('./json/genre.json', []) unless File.exist?('./json/genre.json')
     records = JSON.parse(File.read('./json/genre.json'))
-    records.each { |record| genre_records << record }
+    records.each { |record| genre_records << record['name'] }
     genre_records
   end
 end
