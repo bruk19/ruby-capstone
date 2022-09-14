@@ -1,5 +1,6 @@
 require_relative './music_album'
 require_relative '../genre/genre'
+require_relative '../genre/methods'
 
 class RunMusic
   def self.add_music_album(music_albums, genre_list)
@@ -23,17 +24,20 @@ class RunMusic
       music_album = MusicAlbum.new(true, title, source, label, publish_date, true)
       music_album.genre=(genre)
       music_albums << music_album
-      genre_list << genre
+      genre_list << genre.items[0].genre.name
       puts "\nMusic album added successfully!"
     elsif archived == 'false' || on_spotify == 'false'
       music_album = MusicAlbum.new(false, title, source, label, publish_date, false)
       music_album.genre=(genre)
       music_albums << music_album
-      genre_list << genre
+      genre_list << genre.items[0].genre.name
       puts "\nMusic album added successfully!"
     else
       puts "\nInvalid Option! Please enter [true/false] in the fields as requested."
     end
+
+    # save_data to database
+    RunGenre.save_genre(genre_list)
   end
 
   def self.list_all_music_album(music_albums)
