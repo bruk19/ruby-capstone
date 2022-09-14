@@ -2,7 +2,7 @@ require_relative './game'
 require_relative '../item'
 
 class CreateGame
-    def initialize
+    def initialize(game = 'unknown')
       @game = game
     end
 

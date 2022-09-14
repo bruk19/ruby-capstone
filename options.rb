@@ -19,7 +19,7 @@ class Options
     @books = load_books
     @labels = load_labels
     @games = load_games
-    @games = load_authors
+    @authors = load_authors
     @execute = CreateBook.new(@books, @labels)
     @execute = CreateGame.new(@games)
   end

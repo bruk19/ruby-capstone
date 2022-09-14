@@ -1,7 +1,7 @@
 require_relative './author'
 require_relative '../item'
 
-module GameModule
+module AuthorModule
     def list_authors
         if is_empty(@authors)
           message('No author in the catalog')
