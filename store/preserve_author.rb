@@ -18,7 +18,7 @@ module AuthorsPreserve
     if File.exist?(author_file) && File.read(author_file) != ''
       data = JSON.parse(author_file.read)
       data.each do |author|
-        authorstore << author.new(author['first_name'], author['last_name'])
+        authorstore << Author.new(author['first_name'], author['last_name'])
       end
     else
       File.write(author_file, '[]')

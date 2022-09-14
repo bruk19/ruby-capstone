@@ -1,8 +1,8 @@
 require_relative './game'
 require_relative '../item'
 
-class CreateBook
-    def initialize(game = 'unknown')
+class CreateGame
+    def initialize
       @game = game
     end
 
