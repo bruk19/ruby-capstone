@@ -16,7 +16,7 @@ class Item
     end
   end
 
-  def genre(genre)
+  def genre=(genre)
     @genre = genre
     genre.add_item(self)
   end
