@@ -1,6 +1,6 @@
 require_relative '../item'
 class Genre
-  attr_accessor :items
+  attr_accessor :items, :name
   attr_reader :id
 
   def initialize(name)
@@ -15,10 +15,10 @@ class Genre
   end
 end
 
-# item = Item.new('2010-01-01', false)
-# genre = Genre.new('test')
+item = Item.new('2010-01-01', false)
+genre = Genre.new('test')
 
-# genre.add_item(item)
+item.genre=(genre)
 
-# p genre
-# p item
+p genre
+p item
