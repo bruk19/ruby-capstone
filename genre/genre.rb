@@ -19,6 +19,3 @@ item = Item.new('2010-01-01', false)
 genre = Genre.new('test')
 
 item.genre=(genre)
-
-p genre
-p item

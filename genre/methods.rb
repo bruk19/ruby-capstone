@@ -3,8 +3,7 @@ class RunGenre
     puts "\nThere are no genres yet." if genre_list.empty?
     puts "################## Genres ##################"
     genre_list.each_with_index do |genre, index|
-      p "#{index}) Genre: \"#{genre.items[1]}\""
+      puts "#{index}) #{genre.items[0].genre.name}"
     end
-    # p genre_list
   end
 end
