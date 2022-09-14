@@ -71,17 +71,19 @@ class Options
     on_spotify = gets.chomp.downcase
 
     if archived == 'true' && on_spotify == 'true'
-      @music_albums << MusicAlbum.new(true, "title", "source", "label", "2022/09/16", true)
+      @music_albums << MusicAlbum.new(true, title, source, label, publish_date, true)
     elsif archived == 'false' || on_spotify == 'false'
-      @music_albums << MusicAlbum.new(false, source, label, publish_date, archived: false)
+      @music_albums << MusicAlbum.new(false, title, source, label, publish_date, false)
     else
       puts 'Please enter true or false.'
     end
+    puts "\nMusic album added successfully!"
   end
 
   def list_all_music_album
-    @music_albums.each do |music_album|
-      puts "Title: #{music_album.title}, Source: #{music_album.source}, Label: #{music_album.label}, Publish date: #{music_album.publish_date}, Archived: #{music_album.archived}, On Spotify: #{music_album.on_spotify}"
+    @music_albums.empty? ? (puts "\nThere are no music albums yet.") : @music_albums.each_with_index do |music_album, index|
+      puts "################## Music Albums ##################"
+      puts "#{index}) Title: \"#{music_album.author}\", Source: \"#{music_album.source}\", Label: \"#{music_album.label}\", Publish date: \"#{music_album.publish_date}\", Archived: \"#{music_album.archived}\", On Spotify: \"#{music_album.on_spotify}\""
     end
   end
 end

@@ -1,7 +1,7 @@
 require_relative '../item'
 
 class MusicAlbum < Item
-  attr_accessor :author, :source, :label
+  attr_accessor :author, :source, :label, :on_spotify
   def initialize(on_spotify, author, source, label, publish_date, archived)
     super(publish_date, archived)
     @on_spotify = on_spotify
@@ -15,7 +15,6 @@ class MusicAlbum < Item
   end
 end
 
-# test = MusicAlbum.new(true, "2022/09/08", archived: true)
 test = MusicAlbum.new(false, "title", "source", "label", "2022/09/16", true)
 p test
-p test.can_be_archived?
+p test.on_spotify
