@@ -11,7 +11,7 @@ class Item
   end
 
   def move_to_archive
-    if (can_be_archived?)
+    unless can_be_archived?
       archived
     end
   end
@@ -26,6 +26,6 @@ class Item
   def can_be_archived?
     current_date = Date.today
     date_interval = current_date.year - Date.parse(@publish_date).year
-    date_interval > 10 ? true : false
+    date_interval > 10
   end
 end

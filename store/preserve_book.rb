@@ -4,7 +4,10 @@ module BooksPreserve
   def store_books
     bookstore = []
     @books.each do |book|
-      bookstore << { id: book.id, publisher: book.publisher, cover_state: book.cover_state, publish_date: book.publish_date,
+      bookstore << { id: book.id,
+                     publisher: book.publisher,
+                     cover_state: book.cover_state,
+                     publish_date: book.publish_date,
                      archived: book.archived, label: book.title }
     end
     File.write('./json/book.json', bookstore.to_json)
