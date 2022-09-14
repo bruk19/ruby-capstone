@@ -4,6 +4,7 @@ require_relative './book/book_module'
 require_relative './store/preserve_book'
 require_relative './store/preserve_label'
 require_relative './music/methods'
+require_relative './genre/methods'
 
 class Options
   include LabelModule
@@ -16,6 +17,7 @@ class Options
     @labels = load_labels
     @execute = CreateBook.new(@books, @labels)
     @music_albums = []
+    @genre_list = []
   end
 
   def show_options
@@ -40,7 +42,7 @@ class Options
     when '3'
       list_games
     when '4'
-      list_all_genre
+      RunGenre.list_all_genres(@genre_list)
     when '5'
       list_all_labels
     when '6'
@@ -48,7 +50,7 @@ class Options
     when '7'
       @execute.add_book
     when '8'
-      RunMusic.add_music_album(@music_albums)
+      RunMusic.add_music_album(@music_albums, @genre_list)
     when '9'
       add_game
     else
