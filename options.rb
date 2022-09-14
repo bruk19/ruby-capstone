@@ -72,12 +72,13 @@ class Options
 
     if archived == 'true' && on_spotify == 'true'
       @music_albums << MusicAlbum.new(true, title, source, label, publish_date, true)
+      puts "\nMusic album added successfully!"
     elsif archived == 'false' || on_spotify == 'false'
       @music_albums << MusicAlbum.new(false, title, source, label, publish_date, false)
+      puts "\nMusic album added successfully!"
     else
-      puts 'Please enter true or false.'
+      puts "\nInvalid Option! Please enter [true/false] in fields as requested."
     end
-    puts "\nMusic album added successfully!"
   end
 
   def list_all_music_album
