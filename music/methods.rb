@@ -38,15 +38,58 @@ class RunMusic
 
     # save_data to database
     RunGenre.save_genre(genre_list)
+    save_music_album(music_albums)
   end
 
   def self.list_all_music_album(music_albums)
     if music_albums.empty? 
       puts "\nThere are no music albums yet." 
     else puts "################## Music Albums ##################"
-        music_albums.each_with_index do |music_album, index|
-          puts "#{index}) Title: \"#{music_album.author}\", Source: \"#{music_album.source}\", Label: \"#{music_album.label}\", Publish date: \"#{music_album.publish_date}\", Archived: \"#{music_album.archived}\", On Spotify: \"#{music_album.on_spotify}\""
-        end
+      music_albums.each_with_index do |music_album, index|
+        puts "#{index}) Title: \"#{music_album.author}\", Source: \"#{music_album.source}\", Label: \"#{music_album.label}\", Genre: #{music_album.genre.name}, Publish date: \"#{music_album.publish_date}\", Archived: \"#{music_album.archived}\", On Spotify: \"#{music_album.on_spotify}\""
       end
     end
+  end
+
+  def self.save_music_album(music_albums)
+    # write to file
+    record = []
+    File.write('./json/music_album.json', []) unless File.exist?('./json/music_album.json')
+    music_albums.each { |music_album| 
+      record << { 
+      genre: music_album.genre.name,
+      title: music_album.author,
+      source: music_album.source,
+      label: music_album.label,
+      publish_date: music_album.publish_date,
+      archived: music_album.archived,
+      on_spotify: music_album.on_spotify
+      }
+    }
+    data = JSON.generate(record)
+    File.write('json/music_album.json', data)
+  end
+
+  def self.load_music_albums
+    # read from file
+    records = []
+    File.write('./json/music_album.json', []) unless File.exist?('./json/music_album.json')
+    records = JSON.parse(File.read('./json/music_album.json'))
+    records.each do |record| 
+      p records[0].title
+      genre = Genre.new(record.genre)
+      if record.archived == 'true' && record.on_spotify == 'true'
+        music_album = MusicAlbum.new(true, record.title, record.source, record.label, record.publish_date, true)
+        music_album.genre=(record.genre)
+        records << music_album
+        puts "\nMusic album added successfully!"
+      elsif archived == 'false' || on_spotify == 'false'
+        music_album = MusicAlbum.new(false, title, source, label, publish_date, false)
+        music_album.genre=(record.genre)
+        records << music_album
+      end
+    end
+    records
+  end
+  
 end

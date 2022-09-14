@@ -16,7 +16,7 @@ class Options
     @books = load_books
     @labels = load_labels
     @execute = CreateBook.new(@books, @labels)
-    @music_albums = []
+    @music_albums = RunMusic.load_music_albums
     @genre_list = RunGenre.load_genre
   end
 
