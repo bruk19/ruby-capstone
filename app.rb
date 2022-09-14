@@ -13,6 +13,8 @@ class App
         break
       end
       @options.chosen_value(value)
+      @options.store_books
+      @options.store_labels
     end
   end
 end

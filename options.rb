@@ -1,14 +1,18 @@
 require './book/create_book'
 require_relative './label/label_module'
 require_relative './book/book_module'
+require_relative './store/preserve_book'
+require_relative './store/preserve_label'
 
 class Options
 include LabelModule
 include BookModule
+include BooksPreserve
+include LabelsPreserve
 
   def initialize
-    @books= []
-    @labels = []
+    @books= load_books
+    @labels = load_labels
     @execute = CreateBook.new(@books, @labels)
   end
 
