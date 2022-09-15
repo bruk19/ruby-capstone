@@ -4,12 +4,8 @@ require_relative '../genre/methods'
 
 class RunMusic
   def self.add_music_album(music_albums, genre_list)
-    print 'Enter the author of the music album: '
+    print 'Enter the Title of the music album: '
     title = gets.chomp
-    print 'Enter the source of the music album: '
-    source = gets.chomp
-    print 'Enter the label of the music album: '
-    label = gets.chomp
     print 'Enter the genre of the music album: '
     genre_name = gets.chomp
     print 'Enter the publish date of the music album: [yyyy/mm/dd] '
@@ -21,13 +17,13 @@ class RunMusic
 
     genre = Genre.new(genre_name)
     if archived == 'true' && on_spotify == 'true'
-      music_album = MusicAlbum.new(true, title, source, label, publish_date, true)
+      music_album = MusicAlbum.new(true, title, publish_date, true)
       music_album.genre=(genre)
       music_albums << music_album
       genre_list << genre.items[0].genre.name
       puts "\nMusic album added successfully!"
     elsif archived == 'false' || on_spotify == 'false'
-      music_album = MusicAlbum.new(false, title, source, label, publish_date, false)
+      music_album = MusicAlbum.new(false, title, publish_date, false)
       music_album.genre=(genre)
       music_albums << music_album
       genre_list << genre.items[0].genre.name
@@ -46,7 +42,7 @@ class RunMusic
       puts "\nThere are no music albums yet." 
     else puts "################## Music Albums ##################"
       music_albums.each_with_index do |music_album, index|
-        puts "#{index}) Title: \"#{music_album.author}\", Source: \"#{music_album.source}\", Label: \"#{music_album.label}\", Genre: #{music_album.genre.name}, Publish date: \"#{music_album.publish_date}\", Archived: \"#{music_album.archived}\", On Spotify: \"#{music_album.on_spotify}\""
+        puts "#{index}) Title: \"#{music_album.title}\", Genre: #{music_album.genre.name}, Publish date: \"#{music_album.publish_date}\", Archived: \"#{music_album.archived}\", On Spotify: \"#{music_album.on_spotify}\""
       end
     end
   end
@@ -58,9 +54,7 @@ class RunMusic
     music_albums.each { |music_album| 
       record << { 
       genre: music_album.genre.name,
-      title: music_album.author,
-      source: music_album.source,
-      label: music_album.label,
+      title: music_album.title,
       publish_date: music_album.publish_date,
       archived: music_album.archived,
       on_spotify: music_album.on_spotify
@@ -79,11 +73,11 @@ class RunMusic
     records.each do |record| 
       genre = Genre.new(record['genre'])
       if record['archived'] == true && record['on_spotify'] == true
-        music_album = MusicAlbum.new(true, record['title'], record['source'], record['label'], record['publish_date'], true)
+        music_album = MusicAlbum.new(true, record['title'], record['publish_date'], true)
         music_album.genre=(genre)
         music_records << music_album
       elsif record['archived'] == false || record['on_spotify'] == false
-        music_album = MusicAlbum.new(false, record['title'], record['source'], record['label'], record['publish_date'], false)
+        music_album = MusicAlbum.new(false, record['title'], record['publish_date'], false)
         music_album.genre=(genre)
         music_records << music_album
       end
