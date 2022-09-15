@@ -3,8 +3,8 @@ require './item'
 
 describe Game do
   before :each do
-    @fortnite = Game.new('2011-12-21', 'yes', '2019-12-25')
-    @fifa = Game.new('2020-04-21', 'yes', '2022-04-25')
+    @fortnite = Game.new('2011-12-21', 'yes', '2019-12-25', true, 'john')
+    @fifa = Game.new('2020-04-21', 'yes', '2022-04-25', false, 'samuel')
   end
 
   context 'Test for class Game' do

@@ -1,4 +1,5 @@
 require './game/game'
+require './author/author'
 require './item'
 
 describe Author do
