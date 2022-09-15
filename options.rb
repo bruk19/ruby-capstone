@@ -18,8 +18,6 @@ class Options
   def initialize
     @books = load_books
     @labels = load_labels
-    @games = load_games
-    @authors = load_authors
     @execute = CreateBook.new(@books, @labels)
     @execute = CreateGame.new(@games)
   end
