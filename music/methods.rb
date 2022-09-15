@@ -43,8 +43,13 @@ class RunMusic
     else
       puts '################## Music Albums ##################'
       music_albums.each_with_index do |music_album, index|
-        puts "#{index}) Title: #{music_album.title}, Genre: #{music_album.genre.name}, Publish date: #{music_album.publish_date}, 
-        Archived: #{music_album.archived}\", On Spotify: #{music_album.on_spotify}"
+        puts "#{index})"
+        puts "Title: #{music_album.title}"
+        puts "Genre: #{music_album.genre.name}"
+        puts "Publish Date: #{music_album.publish_date}"
+        puts "Archived: #{music_album.archived}"
+        puts "On Spotify: #{music_album.on_spotify}\n"
+        puts
       end
     end
   end
