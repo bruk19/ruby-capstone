@@ -10,7 +10,10 @@ module GameModule
     puts "\n"
 
     @games.each do |game|
-      print "Author: #{game.first_name}, publish date: #{game.publish_date}, multiplayer: #{game.multiplayer}, last_played_at: #{game.last_played_at}"
+      print "Author: #{game.first_name},
+             publish date: #{game.publish_date},
+             multiplayer: #{game.multiplayer},
+             last_played_at: #{game.last_played_at}"
       puts
     end
   end
