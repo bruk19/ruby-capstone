@@ -3,7 +3,7 @@ require_relative '../item'
 
 module AuthorModule
   def list_authors
-    if is_empty(@authors)
+    if @authors.empty?
       message('No author in the catalog')
       return
     end
@@ -11,6 +11,7 @@ module AuthorModule
 
     @authors.each_with_index do |author, i|
       puts "#{i + 1}) #{author.first_name} #{author.last_name}"
+      puts
     end
   end
 end

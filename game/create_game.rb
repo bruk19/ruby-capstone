@@ -1,9 +1,11 @@
 require_relative './game'
 require_relative '../item'
+require_relative '../author/author'
 
 class CreateGame
-  def initialize(game = 'unknown')
-    @game = game
+  def initialize(game = 'unknown', author = 'unknown')
+    @games = game
+    @authors = author
   end
 
   def add_game
@@ -15,19 +17,46 @@ class CreateGame
 
     case multiplayer
     when 'yes'
-      multiplayer_value = 'yes'
+      multiplayer = 'yes'
     when 'no'
-      multiplayer_value = 'no'
+      multiplayer = 'no'
     else
       puts 'yes or no'
-      multiplayer_value = gets.chomp
+      multiplayer = gets.chomp
+    end
+
+    print 'is Archived [Y/N]: '
+    archived = gets.chomp.downcase
+
+    case archived
+    when 'y'
+      archived = true
+
+    when 'n'
+      archived = false
+    else
+      puts('please enter [Y/N]: ')
     end
 
     print 'Last played at[YYYY-MM-DD]: '
     last_played_at = gets.chomp
 
-    game = Game.new(publish_date, multiplayer_value, last_played_at)
+    print 'Author First Name: '
+    first_name = gets.chomp
+
+    print 'Author Last Name: '
+    last_name = gets.chomp
+    author = Author.new(first_name, last_name)
+    @authors.push(author)
+
+    name = @authors[0].first_name
+
+    game = Game.new(publish_date, multiplayer, last_played_at, archived, name)
     @games.push(game)
-    message('New Game added successfully')
+
+    author.add_item(game)
+    game.add_author(author)
+
+    puts 'New Game added successfully'
   end
 end

@@ -3,23 +3,29 @@ require './game/create_game'
 require_relative './label/label_module'
 require_relative './book/book_module'
 require_relative './game/game_module'
+require_relative './author/author_module'
 require_relative './store/preserve_book'
 require_relative './store/preserve_game'
 require_relative './store/preserve_label'
+require_relative './store/preserve_author'
 
 class Options
   include LabelModule
   include BookModule
   include GameModule
+  include AuthorModule
   include BooksPreserve
   include GamesPreserve
   include LabelsPreserve
+  include AuthorsPreserve
 
   def initialize
     @books = load_books
     @labels = load_labels
-    @execute = CreateBook.new(@books, @labels)
-    @execute = CreateGame.new(@games)
+    @games = load_games
+    @authors = load_authors
+    @executeBook = CreateBook.new(@books, @labels)
+    @executeGame = CreateGame.new(@games, @authors)
   end
 
   def show_options
@@ -50,11 +56,11 @@ class Options
     when '6'
       list_authors
     when '7'
-      @execute.add_book
+      @executeBook.add_book
     when '8'
       add_music_album
     when '9'
-      @execute.add_game
+      @executeGame.add_game
     else
       puts 'Please enter a number between 1 and 0.'
     end

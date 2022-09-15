@@ -2,12 +2,13 @@ require './item'
 require 'date'
 
 class Game < Item
-  attr_accessor :multiplayer, :last_played_at, :pulish_date
+  attr_accessor :multiplayer, :last_played_at, :pulish_date, :archived, :author
 
-  def initialize(_pulish_date, multiplayer, last_played_at)
-    super(publish_date)
+  def initialize(publish_date, multiplayer, last_played_at, archived, name)
+    super(publish_date, archived)
     @multiplayer = multiplayer
     @last_played_at = Date.strptime(last_played_at, '%Y-%m-%d')
+    @author = name
   end
 
   def can_be_archived?
