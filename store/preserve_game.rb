@@ -9,7 +9,7 @@ module GamesPreserve
         multiplayer: game.multiplayer,
         last_played_at: game.last_played_at,
         archived: game.archived,
-        author: game.author
+        author: game.first_name
       }
     end
     File.write('./json/game.json', gamestore.to_json)

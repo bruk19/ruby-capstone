@@ -4,7 +4,7 @@ require_relative '../item'
 module AuthorModule
   def list_authors
     if @authors.empty?
-      message('No author in the catalog')
+      puts 'No author in the catalog'
       return
     end
     puts "\n"

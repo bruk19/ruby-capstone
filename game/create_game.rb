@@ -48,10 +48,7 @@ class CreateGame
     last_name = gets.chomp
     author = Author.new(first_name, last_name)
     @authors.push(author)
-
-    name = @authors[0].first_name
-
-    game = Game.new(publish_date, multiplayer, last_played_at, archived, name)
+    game = Game.new(publish_date, multiplayer, last_played_at, archived, first_name)
     @games.push(game)
 
     author.add_item(game)
