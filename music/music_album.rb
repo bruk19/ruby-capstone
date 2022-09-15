@@ -13,5 +13,3 @@ class MusicAlbum < Item
     archived && @on_spotify
   end
 end
-
-p MusicAlbum.new(true, 'The Dark Side of the Moon', '1973/03/01', false).can_be_archived?
