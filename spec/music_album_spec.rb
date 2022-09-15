@@ -3,7 +3,7 @@ require_relative '../item'
 
 describe MusicAlbum do
   before :each do
-    @music_album = MusicAlbum.new(false, 'The Beatles', 'Abbey Road', 'Apple Records', '1969-09-26', true)
+    @music_album = MusicAlbum.new(false, 'The Dark Side of the Moon', '1973/03/01', true)
   end
   context 'when an object is created' do
     it 'should should be an instance of MusicAlbum class' do
@@ -15,10 +15,10 @@ describe MusicAlbum do
     end
 
     it 'should have parameters set correctly' do
-      expect(@music_album.author).to eq('The Beatles')
-      expect(@music_album.source).to eq('Abbey Road')
-      expect(@music_album.label).to eq('Apple Records')
-      expect(@music_album.publish_date).to eq('1969-09-26')
+      expect(@music_album.on_spotify).to eq(false)
+      expect(@music_album.title).to eq('The Dark Side of the Moon')
+      expect(@music_album.publish_date).to eq('1973/03/01')
+      expect(@music_album.archived).to eq(true)
     end
 
     it 'should have can_be_achived set to false' do
