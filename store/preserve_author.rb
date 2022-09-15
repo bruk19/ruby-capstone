@@ -4,10 +4,10 @@ module AuthorsPreserve
   def store_authors
     authorstore = []
     @authors.each do |author|
-      authorstore << { 
-                    first_name: author.first_name,
-                    last_name: author.last_name
-                 }
+      authorstore << {
+        first_name: author.first_name,
+        last_name: author.last_name
+      }
     end
     File.write('./json/author.json', authorstore.to_json)
   end
