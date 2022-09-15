@@ -11,6 +11,6 @@ class Genre
 
   def add_item(item)
     @items.push(item) unless @items.include?(item)
-    item.genre=(self) unless item.genre == self
+    item.genre = (self) unless item.genre == self
   end
 end

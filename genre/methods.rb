@@ -5,7 +5,7 @@ class RunGenre
     if genre_list.empty?
       puts "\nThere are no genres yet."
     else
-      puts "################## Genres ##################"
+      puts '################## Genres ##################'
       genre_list.each_with_index do |genre, index|
         puts "#{index}) #{genre}"
       end
