@@ -1,6 +1,6 @@
 require './item'
 
-class Author < Item
+class Author
   attr_reader :id, :items
   attr_accessor :first_name, :last_name
 

@@ -31,5 +31,4 @@ class Item
     date_interval = current_date.year - Date.parse(@publish_date).year
     date_interval > 10
   end
-
 end

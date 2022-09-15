@@ -21,8 +21,8 @@ module GamesPreserve
     if File.exist?(game_file) && File.read(game_file) != ''
       data = JSON.parse(game_file.read)
       data.each do |game|
-        gamestore << Game.new(game['pubish_date'], 
-                              game['multiplayer'], 
+        gamestore << Game.new(game['pubish_date'],
+                              game['multiplayer'],
                               game['last_played_at'],
                               game['published_date'],
                               game['author'])
