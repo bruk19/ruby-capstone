@@ -15,6 +15,8 @@ class App
       @options.chosen_value(value)
       @options.store_books
       @options.store_labels
+      @options.store_games
+      @options.store_authors
     end
   end
 end
