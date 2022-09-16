@@ -6,7 +6,7 @@ class RunGenre
       puts "\nThere are no genres yet."
     else
       puts '################## Genres ##################'
-      genre_list.each_with_index do |genre, index|
+      genre_list.uniq.each_with_index do |genre, index|
         puts "#{index}) #{genre}"
       end
     end

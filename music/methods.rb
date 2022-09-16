@@ -15,22 +15,30 @@ class RunMusic
     print 'On Spotify? [true/false] '
     on_spotify = gets.chomp.downcase
 
-    genre = Genre.new(genre_name)
-    if archived == 'true' && on_spotify == 'true'
-      music_album = MusicAlbum.new(true, title, publish_date, true)
-      music_album.genre = (genre)
-      music_albums << music_album
-      genre_list << genre.items[0].genre.name
-      puts "\nMusic album added successfully!"
-    elsif archived == 'false' || on_spotify == 'false'
-      music_album = MusicAlbum.new(false, title, publish_date, false)
-      music_album.genre = (genre)
-      music_albums << music_album
-      genre_list << genre.items[0].genre.name
-      puts "\nMusic album added successfully!"
+    case on_spotify
+    when 'true'
+      on_spotify = true
+    when 'false'
+      on_spotify = false
     else
-      puts "\nInvalid Option! Please enter [true/false] in the fields as requested."
+      puts 'Invalid option. Please try again.'
     end
+
+    case archived
+    when 'true'
+      archived = true
+    when 'false'
+      archived = false
+    else
+      puts 'Invalid option. Please try again.'
+    end
+
+    genre = Genre.new(genre_name)
+    music_album = MusicAlbum.new(on_spotify, title, publish_date, archived)
+    music_album.genre = (genre)
+    music_albums << music_album
+    genre_list << genre.items[0].genre.name
+    puts "\nMusic album added successfully!"
 
     # save_data to database
     RunGenre.save_genre(genre_list)
@@ -79,15 +87,9 @@ class RunMusic
 
     records.each do |record|
       genre = Genre.new(record['genre'])
-      if record['archived'] == true && record['on_spotify'] == true
-        music_album = MusicAlbum.new(true, record['title'], record['publish_date'], true)
-        music_album.genre = (genre)
-        music_records << music_album
-      elsif record['archived'] == false || record['on_spotify'] == false
-        music_album = MusicAlbum.new(false, record['title'], record['publish_date'], false)
-        music_album.genre = (genre)
-        music_records << music_album
-      end
+      music_album = MusicAlbum.new(record['on_spotify'], record['title'], record['publish_date'], record['archived'])
+      music_album.genre = (genre)
+      music_records << music_album
     end
     music_records
   end
