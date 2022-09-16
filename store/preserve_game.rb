@@ -3,6 +3,7 @@ require 'json'
 module GamesPreserve
   def store_games
     gamestore = []
+    File.write('./json/game.json', []) unless File.exist?('./json/game.json')
     @games.each do |game|
       gamestore << {
         publish_date: game.publish_date,
@@ -17,6 +18,7 @@ module GamesPreserve
 
   def load_games
     gamestore = []
+    File.write('./json/game.json', []) unless File.exist?('./json/game.json')
     game_file = File.open('./json/game.json')
     if File.exist?(game_file) && File.read(game_file) != ''
       data = JSON.parse(game_file.read)
