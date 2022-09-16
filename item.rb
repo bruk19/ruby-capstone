@@ -1,7 +1,7 @@
 require 'date'
 
 class Item
-  attr_accessor :label, :author
+  attr_accessor :label, :genre :author
   attr_reader :id, :publish_date, :archived
 
   def initialize(publish_date, archived, id = nil)
@@ -12,6 +12,12 @@ class Item
 
   def move_to_archive
     archived unless can_be_archived?
+
+  end
+
+  def genre=(genre)
+    @genre = genre
+    genre.add_item(self)
   end
 
   def add_label(label)
