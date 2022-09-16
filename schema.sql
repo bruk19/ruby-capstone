@@ -25,11 +25,6 @@ CREATE TABLE genres(
   name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE sources(
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL
-);
-
 CREATE TABLE music_albums(
   id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
